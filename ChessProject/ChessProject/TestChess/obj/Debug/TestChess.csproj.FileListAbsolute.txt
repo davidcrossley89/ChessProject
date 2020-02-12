@@ -1,0 +1,9 @@
+C:\Users\Student2\Source\Repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.csprojAssemblyReference.cache
+C:\Users\Student2\Source\Repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.Form1.resources
+C:\Users\Student2\Source\Repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.Properties.Resources.resources
+C:\Users\Student2\Source\Repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.csproj.GenerateResource.cache
+C:\Users\Student2\source\repos\ChessProject\ChessProject\TestChess\bin\Debug\TestChess.exe.config
+C:\Users\Student2\source\repos\ChessProject\ChessProject\TestChess\bin\Debug\TestChess.exe
+C:\Users\Student2\source\repos\ChessProject\ChessProject\TestChess\bin\Debug\TestChess.pdb
+C:\Users\Student2\source\repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.exe
+C:\Users\Student2\source\repos\ChessProject\ChessProject\TestChess\obj\Debug\TestChess.pdb

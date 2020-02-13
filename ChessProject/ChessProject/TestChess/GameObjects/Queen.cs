@@ -12,8 +12,8 @@ namespace GamePieces
             this.setPossibleMoves(makeMoves());
             this.setWhite(white);
             this.setName(n);
-            if (white) { this.setImage(Image.FromFile("WhiteQueen.jpg")); }
-            else { this.setImage(Image.FromFile("BlackQueen.jpg")); }
+            if (white) { this.setImage(global::TestChess.Properties.Resources.WhiteQueen); }
+            else { this.setImage(global::TestChess.Properties.Resources.BlackQueen); }
 
         }
 

@@ -78,7 +78,7 @@ namespace GamePieces
 			{
 				for (int j=0; j<8; j++)
 				{
-					Console.Write(" {0} ", displayBoard[i][j]);
+					Console.Write(" {0} ", displayBoard[j][i]);
 				}
 				Console.WriteLine("");
 			}

@@ -24,10 +24,7 @@ namespace TestChess
             Application.Run(view);
             Board board = new Board();
 
-            view.pictureBox1.Image = global::TestChess.Properties.Resources.WhiteRook;
-            view.panel9.Invalidate();
-            view.panel9.Controls.Add(view.pictureBox2);
-            view.Update();
+            
             
 
         }

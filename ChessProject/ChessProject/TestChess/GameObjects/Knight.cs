@@ -12,8 +12,8 @@ namespace GamePieces
             this.setPossibleMoves(new int[][] { new int[]{ -2, -1 }, new int[] { -2, 1 }, new int[] { -1, -2 }, new int[] { -1, 2 }, new int[] { 1, -2 }, new int[] { 1, 2 }, new int[] { 2, -1 }, new int[] { 2, 1 } });
             this.setWhite(white);
             this.setName(n);
-            if (white) { this.setImage(Image.FromFile("WhiteKnight.jpg")); }
-            else { this.setImage(Image.FromFile("BlackKnight.jpg")); }
+            if (white) { this.setImage(global::TestChess.Properties.Resources.WhiteKnight); }
+            else { this.setImage(global::TestChess.Properties.Resources.BlackKnight); }
 
         }
 

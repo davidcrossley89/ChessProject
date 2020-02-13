@@ -17,16 +17,17 @@ namespace GamePieces
             if (white)
             {//white pawns only move up
                 this.setPossibleMoves(new int[][] { new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 1 }, new int[] { -1, 1 } });//can move up 1 or two, or 1 diagonal to capture a piece
-                this.setImage(Image.FromFile("WhitePawn.jpg"));
+                this.setImage(global::TestChess.Properties.Resources.WhitePawn);
             }
             else
             {//black pawns can only move down
                 this.setPossibleMoves(new int[][] { new int[] { 0, -1 }, new int[] { 0, -2 }, new int[] { 1, -1 }, new int[] { -1, -1 } });//can move down 1 or two, or 1 diagonal to capture a piece
-                this.setImage(Image.FromFile("BlackPawn.jpg"));
+                this.setImage(global::TestChess.Properties.Resources.BlackPawn);
             }
             this.setWhite(white);
             this.setName(n);
             Console.WriteLine("Pawn {0} Created", this.getName());
+
 
         }
         public override void move(int[] newPos)

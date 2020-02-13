@@ -15,8 +15,8 @@ namespace GamePieces
             this.setPossibleMoves(makeMoves());
             this.setWhite(white);
             this.setName(n);
-            if (white) { this.setImage(Image.FromFile("WhiteRook.jpg")); }
-            else { this.setImage(Image.FromFile("BlackRook.jpg")); }
+            if (white) { this.setImage(global::TestChess.Properties.Resources.WhiteRook); }
+            else { this.setImage(global::TestChess.Properties.Resources.BlackRook); }
         }
 
         private int[][] makeMoves() //only used to instantiate possibleMoves

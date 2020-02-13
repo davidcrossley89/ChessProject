@@ -124,4 +124,43 @@
   <data name="BlackPawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\BlackPawn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BlackBishop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackBishop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackBishop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackBishop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackKing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackKing.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackKnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackKnight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackPawn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackPawn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackQueen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackQueen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackRook1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\BlackRook.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteBishop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhiteBishop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteKing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhiteKing.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteKnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhiteKnight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhitePawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhitePawn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteQueen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhiteQueen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteRook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\WhiteRook.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

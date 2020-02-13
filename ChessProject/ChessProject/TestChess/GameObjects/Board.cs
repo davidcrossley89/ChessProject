@@ -4,8 +4,8 @@ namespace GamePieces
 {
 	public class Board
 	{
-		GamePiece[] whitePieces;
-		GamePiece[] blackPieces;
+		public GamePiece[] whitePieces;
+		public GamePiece[] blackPieces;
 		string[][] displayBoard;
 
 		public Board()

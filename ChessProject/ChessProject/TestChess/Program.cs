@@ -22,9 +22,10 @@ namespace TestChess
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 view = new Form1();
             Application.Run(view);
-            Board board = new Board();
 
-            
+
+
+
             
 
         }

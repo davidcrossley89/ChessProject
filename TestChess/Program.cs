@@ -17,7 +17,6 @@ namespace TestChess
 
         static void Main()
         {
-            Console.WriteLine("This is  Output");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 view = new Form1();

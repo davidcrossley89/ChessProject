@@ -16,19 +16,18 @@ namespace TestChess
         public Board board;
         public int[][] moveArray = new int[2][];
         public bool startPos = true;
-        public Dictionary<string, GamePiece> UpdateBoard(Dictionary<string, GamePiece> pieces, int[] startPosition, int[] endPosition)
+        public void UpdateBoard()
         {
-            string startPos = board.coordConvertToAlg(startPosition);
-            string endPos = board.coordConvertToAlg(endPosition);
-            GamePiece startPiece = pieces[startPos];
-            Console.WriteLine("{0},{1}, {2}", startPos, startPos, startPiece.getName());
-            bool possible = startPiece.checkMove(endPosition);
+            string startPos = board.coordConvertToAlg(this.moveArray[0]);
+            string endPos = board.coordConvertToAlg(this.moveArray[1]);
+            GamePiece startPiece = board.pieces[startPos];
+            Console.WriteLine("{0},{1}, {2}", startPos, endPos, startPiece.getName());
+            bool possible = startPiece.checkMove(moveArray[1]);
             if (possible)
             {
-                pieces[endPos] = startPiece;
-                pieces[startPos] = new Empty(startPosition);
+                board.pieces[endPos] = startPiece;
+                board.pieces[startPos] = new Empty(moveArray[0]);
             }
-            return pieces;
         }
         public Form1()
         {
@@ -40,9 +39,10 @@ namespace TestChess
        
         private void button1_Click(object sender, EventArgs e)
         {
-            this.board.pieces = UpdateBoard(board.pieces, this.moveArray[0], this.moveArray[1]);
-            this.startPos = true;
-            this.moveArray = new int[2][];
+            Console.WriteLine("MoveArray = [{0}, {1}]",Convert.ToString(moveArray[0]),Convert.ToString(moveArray[1]));
+            UpdateBoard();
+            startPos = true;
+            moveArray = new int[2][];
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -64,6 +64,7 @@ namespace TestChess
         {
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
+            Console.WriteLine("Added to Array");
             int[] pos = new int[2] { 7, 7 };
             if (this.startPos) { this.moveArray[0] = pos; }
             else { this.moveArray[1] = pos; }

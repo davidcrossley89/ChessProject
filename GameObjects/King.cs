@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Drawing;
 
 namespace GamePieces
 {
     public class King : GamePiece
-{
-    //first move matters for castling
-    Boolean firstMove = true;
-
-    //Constructor:  Starting Position, color, name
-    public King(int[] startingPos, Boolean white, string n)
     {
-        this.setPosition(startingPos);
-        this.setPossibleMoves(makeMoves(firstMove));
-        this.setWhite(white);
-        this.setName(n);
-        if (white) { this.setImage(global::TestChess.Properties.Resources.WhiteKing); }
-        else { this.setImage(global::TestChess.Properties.Resources.BlackKing); }
+        //first move matters for castling
+        Boolean firstMove = true;
+
+        //Constructor:  Starting Position, color, name
+        public King(int[] startingPos, Boolean white, string n)
+        {
+            setPosition(startingPos);
+            setPossibleMoves(makeMoves(firstMove));
+            setWhite(white);
+            setName(n);
+            if (white) { setImage(global::TestChess.Properties.Resources.WhiteKing); }
+            else { setImage(global::TestChess.Properties.Resources.BlackKing); }
         }
 
-    private int[][] makeMoves(Boolean firstMove) //only used to instantiate possibleMoves
-    {
+        private int[][] makeMoves(Boolean firstMove) //only used to instantiate possibleMoves
+        {
             if (firstMove)
             {
                 int[][] allMoves = new int[][]  {
@@ -50,24 +49,25 @@ namespace GamePieces
                 };
                 return allMoves;
             }
-       }
-
-    override public void move(int[] newPos)
-    {
-        if (checkMove(newPos)) { 
-            this.setPosition(newPos);
-            if (getFirstMove())
-            {
-                this.setFirstMove(false);
-                this.setPossibleMoves(makeMoves(firstMove));
-                }
         }
-        else { Console.WriteLine("Invalid Move"); }
-    }
 
-    //Getters and Setters
-    public Boolean getFirstMove() { return firstMove; }
-    public void setFirstMove(Boolean move) { this.firstMove = move; }
+        override public void move(int[] newPos)
+        {
+            if (checkMove(newPos))
+            {
+                setPosition(newPos);
+                if (getFirstMove())
+                {
+                    setFirstMove(false);
+                    setPossibleMoves(makeMoves(firstMove));
+                }
+            }
+            else { Console.WriteLine("Invalid Move"); }
+        }
+
+        //Getters and Setters
+        public Boolean getFirstMove() { return firstMove; }
+        public void setFirstMove(Boolean move) { firstMove = move; }
 
     }
 }

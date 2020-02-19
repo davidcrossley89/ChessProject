@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 
 
 namespace GamePieces
@@ -8,13 +7,13 @@ namespace GamePieces
     {
         public Bishop(int[] startingPos, Boolean white, string n)
         {
-        
-            this.setPosition(startingPos);
-            this.setPossibleMoves(makeMoves());
-            this.setWhite(white);
-            this.setName(n);
-            if (white) { this.setImage(global::TestChess.Properties.Resources.WhiteBishop); }
-            else { this.setImage(global::TestChess.Properties.Resources.BlackBishop); }
+
+            setPosition(startingPos);
+            setPossibleMoves(makeMoves());
+            setWhite(white);
+            setName(n);
+            if (white) { setImage(global::TestChess.Properties.Resources.WhiteBishop); }
+            else { setImage(global::TestChess.Properties.Resources.BlackBishop); }
 
         }
 
@@ -43,7 +42,7 @@ namespace GamePieces
                 allMoves[j] = new int[] { -1 * i, -1 * i }; //any amount of spaces left
             }
             return allMoves;
-        
+
         }
 
     }

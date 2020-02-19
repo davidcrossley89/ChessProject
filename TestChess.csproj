@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="GameObjects\Bishop.cs" />
     <Compile Include="GameObjects\Board.cs" />
+    <Compile Include="GameObjects\Empty.cs" />
     <Compile Include="GameObjects\GamePiece.cs" />
     <Compile Include="GameObjects\King.cs" />
     <Compile Include="GameObjects\Knight.cs" />
@@ -89,8 +90,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\" />
-    <Folder Include="GameObjects\Pieces\" />
+    <Content Include="bin\Debug\BlackBishop.jpg" />
+    <Content Include="bin\Debug\BlackKing.jpg" />
+    <Content Include="bin\Debug\BlackKnight.jpg" />
+    <Content Include="bin\Debug\BlackPawn.jpg" />
+    <Content Include="bin\Debug\BlackQueen.jpg" />
+    <Content Include="bin\Debug\BlackRook.jpg" />
+    <Content Include="bin\Debug\WhiteBishop.jpg" />
+    <Content Include="bin\Debug\WhiteKing.jpg" />
+    <Content Include="bin\Debug\WhiteKnight.jpg" />
+    <Content Include="bin\Debug\WhitePawn.jpg" />
+    <Content Include="bin\Debug\WhiteQueen.jpg" />
+    <Content Include="bin\Debug\WhiteRook.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

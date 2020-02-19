@@ -13,9 +13,11 @@ namespace TestChess
 {
     public partial class Form1 : Form
     {
-        public Board board;
+        public Board board = new Board();
         public int[][] moveArray = new int[2][];
+        public PictureBox[] boxArray = new PictureBox[2];
         public bool startPos = true;
+        Graphics g;
         public void UpdateBoard()
         {
             string startPos = board.coordConvertToAlg(this.moveArray[0]);
@@ -26,23 +28,32 @@ namespace TestChess
             if (possible)
             {
                 board.pieces[endPos] = startPiece;
+                startPiece.setPosition(moveArray[1]);
                 board.pieces[startPos] = new Empty(moveArray[0]);
             }
+
+            boxArray[0].Image = board.pieces[startPos].getImage();
+            boxArray[1].Image = board.pieces[endPos].getImage();
+
+            boxArray[0].BackColor = Color.FromArgb(0,0,0,0);
+            boxArray[1].BackColor = Color.FromArgb(0, 0, 0, 0);
+            board.populateBoard();
+            board.printBoard();
+
         }
         public Form1()
         {
             InitializeComponent();
-            board = new Board();
 
         }
 
        
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("MoveArray = [{0}, {1}]",Convert.ToString(moveArray[0]),Convert.ToString(moveArray[1]));
             UpdateBoard();
             startPos = true;
             moveArray = new int[2][];
+
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -66,8 +77,8 @@ namespace TestChess
             pb.BackColor = System.Drawing.Color.Yellow;
             Console.WriteLine("Added to Array");
             int[] pos = new int[2] { 7, 7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos;  this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -76,8 +87,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -86,8 +97,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -96,8 +107,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -106,8 +117,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -116,8 +127,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -126,8 +137,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,7 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -136,8 +147,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,7};
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -146,8 +157,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -156,8 +167,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -166,8 +177,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -176,8 +187,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -186,8 +197,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -196,8 +207,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -206,8 +217,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -216,8 +227,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,6 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -226,8 +237,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -236,8 +247,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -246,8 +257,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -256,8 +267,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -266,8 +277,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -276,8 +287,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -286,8 +297,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -296,8 +307,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,5 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -306,8 +317,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -316,8 +327,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -326,8 +337,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -336,8 +347,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -346,8 +357,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -356,8 +367,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -366,8 +377,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -376,8 +387,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,4 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -386,8 +397,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -396,8 +407,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -406,8 +417,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -416,8 +427,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -426,8 +437,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -436,8 +447,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -446,8 +457,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -456,8 +467,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,3 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -466,8 +477,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -476,8 +487,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -486,8 +497,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] {5,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -496,8 +507,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -506,8 +517,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -516,8 +527,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -526,8 +537,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -536,8 +547,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0,2 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -546,8 +557,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -556,8 +567,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] {6,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -566,8 +577,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -576,8 +587,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -586,8 +597,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -596,8 +607,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -606,8 +617,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -616,8 +627,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] {0,1 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -626,8 +637,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 7, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -636,8 +647,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 6, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -646,8 +657,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 5, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -656,8 +667,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 4, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -666,8 +677,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 3, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -676,8 +687,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 2, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -686,8 +697,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 1, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 
@@ -696,8 +707,8 @@ namespace TestChess
             PictureBox pb = (PictureBox)sender;
             pb.BackColor = System.Drawing.Color.Yellow;
             int[] pos = new int[2] { 0, 0 };
-            if (this.startPos) { this.moveArray[0] = pos; }
-            else { this.moveArray[1] = pos; }
+            if (this.startPos) { this.moveArray[0] = pos; this.boxArray[0] = pb; }
+            else { this.moveArray[1] = pos; this.boxArray[1] = pb; }
             this.startPos = !this.startPos;
         }
 

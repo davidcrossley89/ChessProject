@@ -1,6 +1,8 @@
 ﻿
 using GamePieces;
 using System;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace TestChess
 {
@@ -23,8 +25,13 @@ namespace TestChess
             }
             base.Dispose(disposing);
         }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            this.g = e.Graphics;
+            Update();
+        }
 
-        
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -399,7 +406,7 @@ namespace TestChess
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TestChess.Properties.Resources.BlackRook;
+            this.pictureBox1.Image = this.board.pieces["h8"].getImage();
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 68);
@@ -419,7 +426,7 @@ namespace TestChess
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::TestChess.Properties.Resources.BlackKnight;
+            this.pictureBox2.Image = this.board.pieces["g8"].getImage();
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(68, 68);
@@ -441,7 +448,7 @@ namespace TestChess
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::TestChess.Properties.Resources.BlackBishop;
+            this.pictureBox3.Image = this.board.pieces["f8"].getImage();
             this.pictureBox3.Location = new System.Drawing.Point(3, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(68, 68);
@@ -461,7 +468,7 @@ namespace TestChess
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::TestChess.Properties.Resources.BlackQueen;
+            this.pictureBox4.Image = this.board.pieces["e8"].getImage();
             this.pictureBox4.Location = new System.Drawing.Point(3, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(68, 68);
@@ -482,7 +489,7 @@ namespace TestChess
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::TestChess.Properties.Resources.BlackKing;
+            this.pictureBox5.Image = this.board.pieces["d8"].getImage();
             this.pictureBox5.Location = new System.Drawing.Point(3, 3);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(68, 68);
@@ -502,7 +509,7 @@ namespace TestChess
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::TestChess.Properties.Resources.BlackBishop;
+            this.pictureBox6.Image = this.board.pieces["c8"].getImage();
             this.pictureBox6.Location = new System.Drawing.Point(3, 3);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(68, 68);
@@ -523,7 +530,7 @@ namespace TestChess
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::TestChess.Properties.Resources.BlackKnight;
+            this.pictureBox7.Image = this.board.pieces["b8"].getImage();
             this.pictureBox7.Location = new System.Drawing.Point(3, 3);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(68, 68);
@@ -543,7 +550,7 @@ namespace TestChess
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::TestChess.Properties.Resources.BlackRook;
+            this.pictureBox8.Image = this.board.pieces["a8"].getImage();
             this.pictureBox8.Location = new System.Drawing.Point(3, 3);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(68, 68);
@@ -563,7 +570,7 @@ namespace TestChess
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox9.Image = this.board.pieces["h7"].getImage();
             this.pictureBox9.Location = new System.Drawing.Point(3, 3);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(68, 68);
@@ -584,7 +591,7 @@ namespace TestChess
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox10.Image = this.board.pieces["g7"].getImage();
             this.pictureBox10.Location = new System.Drawing.Point(3, 3);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(68, 68);
@@ -604,7 +611,7 @@ namespace TestChess
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox11.Image = this.board.pieces["f7"].getImage();
             this.pictureBox11.Location = new System.Drawing.Point(3, 3);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(68, 68);
@@ -625,7 +632,7 @@ namespace TestChess
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox12.Image = this.board.pieces["e7"].getImage();
             this.pictureBox12.Location = new System.Drawing.Point(3, 3);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(68, 68);
@@ -645,7 +652,7 @@ namespace TestChess
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox13.Image = this.board.pieces["d7"].getImage();
             this.pictureBox13.Location = new System.Drawing.Point(3, 3);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(68, 68);
@@ -666,7 +673,7 @@ namespace TestChess
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox14.Image = this.board.pieces["c7"].getImage();
             this.pictureBox14.Location = new System.Drawing.Point(3, 3);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(68, 68);
@@ -686,7 +693,7 @@ namespace TestChess
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox15.Image = this.board.pieces["b7"].getImage();
             this.pictureBox15.Location = new System.Drawing.Point(3, 3);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(68, 68);
@@ -708,7 +715,7 @@ namespace TestChess
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = global::TestChess.Properties.Resources.BlackPawn;
+            this.pictureBox16.Image = this.board.pieces["a7"].getImage();
             this.pictureBox16.Location = new System.Drawing.Point(3, 3);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(68, 68);
@@ -1353,7 +1360,6 @@ namespace TestChess
             // 
             // pictureBox49
             // 
-            this.pictureBox49.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox49.Location = new System.Drawing.Point(3, 3);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(68, 68);
@@ -1373,7 +1379,6 @@ namespace TestChess
             // 
             // pictureBox50
             // 
-            this.pictureBox50.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox50.Location = new System.Drawing.Point(3, 3);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(68, 68);
@@ -1394,7 +1399,6 @@ namespace TestChess
             // 
             // pictureBox51
             // 
-            this.pictureBox51.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox51.Location = new System.Drawing.Point(3, 3);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(68, 68);
@@ -1414,7 +1418,6 @@ namespace TestChess
             // 
             // pictureBox52
             // 
-            this.pictureBox52.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox52.Location = new System.Drawing.Point(3, 3);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(68, 68);
@@ -1435,7 +1438,6 @@ namespace TestChess
             // 
             // pictureBox53
             // 
-            this.pictureBox53.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox53.Location = new System.Drawing.Point(3, 3);
             this.pictureBox53.Name = "pictureBox53";
             this.pictureBox53.Size = new System.Drawing.Size(68, 68);
@@ -1455,7 +1457,6 @@ namespace TestChess
             // 
             // pictureBox54
             // 
-            this.pictureBox54.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox54.Location = new System.Drawing.Point(3, 3);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(68, 68);
@@ -1475,8 +1476,6 @@ namespace TestChess
             this.panel55.TabIndex = 54;
             // 
             // pictureBox55
-            // 
-            this.pictureBox55.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox55.Location = new System.Drawing.Point(3, 3);
             this.pictureBox55.Name = "pictureBox55";
             this.pictureBox55.Size = new System.Drawing.Size(68, 68);
@@ -1496,7 +1495,6 @@ namespace TestChess
             // 
             // pictureBox56
             // 
-            this.pictureBox56.Image = global::TestChess.Properties.Resources.WhitePawn;
             this.pictureBox56.Location = new System.Drawing.Point(3, 3);
             this.pictureBox56.Name = "pictureBox56";
             this.pictureBox56.Size = new System.Drawing.Size(68, 68);
@@ -1516,7 +1514,6 @@ namespace TestChess
             // 
             // pictureBox57
             // 
-            this.pictureBox57.Image = global::TestChess.Properties.Resources.WhiteRook;
             this.pictureBox57.Location = new System.Drawing.Point(3, 3);
             this.pictureBox57.Name = "pictureBox57";
             this.pictureBox57.Size = new System.Drawing.Size(68, 68);
@@ -1537,7 +1534,6 @@ namespace TestChess
             // 
             // pictureBox58
             // 
-            this.pictureBox58.Image = global::TestChess.Properties.Resources.WhiteKnight;
             this.pictureBox58.Location = new System.Drawing.Point(3, 3);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(68, 68);
@@ -1557,7 +1553,6 @@ namespace TestChess
             // 
             // pictureBox59
             // 
-            this.pictureBox59.Image = global::TestChess.Properties.Resources.WhiteBishop;
             this.pictureBox59.Location = new System.Drawing.Point(3, 3);
             this.pictureBox59.Name = "pictureBox59";
             this.pictureBox59.Size = new System.Drawing.Size(68, 68);
@@ -1578,7 +1573,6 @@ namespace TestChess
             // 
             // pictureBox60
             // 
-            this.pictureBox60.Image = global::TestChess.Properties.Resources.WhiteKing;
             this.pictureBox60.Location = new System.Drawing.Point(3, 3);
             this.pictureBox60.Name = "pictureBox60";
             this.pictureBox60.Size = new System.Drawing.Size(68, 68);
@@ -1598,7 +1592,6 @@ namespace TestChess
             // 
             // pictureBox61
             // 
-            this.pictureBox61.Image = global::TestChess.Properties.Resources.WhiteQueen;
             this.pictureBox61.Location = new System.Drawing.Point(3, 3);
             this.pictureBox61.Name = "pictureBox61";
             this.pictureBox61.Size = new System.Drawing.Size(68, 68);
@@ -1619,7 +1612,6 @@ namespace TestChess
             // 
             // pictureBox62
             // 
-            this.pictureBox62.Image = global::TestChess.Properties.Resources.WhiteBishop;
             this.pictureBox62.Location = new System.Drawing.Point(3, 3);
             this.pictureBox62.Name = "pictureBox62";
             this.pictureBox62.Size = new System.Drawing.Size(68, 68);
@@ -1639,7 +1631,6 @@ namespace TestChess
             // 
             // pictureBox63
             // 
-            this.pictureBox63.Image = global::TestChess.Properties.Resources.WhiteKnight;
             this.pictureBox63.Location = new System.Drawing.Point(3, 3);
             this.pictureBox63.Name = "pictureBox63";
             this.pictureBox63.Size = new System.Drawing.Size(68, 68);
@@ -1660,7 +1651,6 @@ namespace TestChess
             // 
             // pictureBox64
             // 
-            this.pictureBox64.Image = global::TestChess.Properties.Resources.WhiteRook;
             this.pictureBox64.Location = new System.Drawing.Point(3, 3);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(68, 68);
@@ -1668,6 +1658,55 @@ namespace TestChess
             this.pictureBox64.TabIndex = 0;
             this.pictureBox64.TabStop = false;
             this.pictureBox64.Click += new System.EventHandler(this.pictureBox64_Click);
+            
+            this.pictureBox17.Image = this.board.pieces["h6"].getImage();
+            this.pictureBox18.Image = this.board.pieces["g6"].getImage();
+            this.pictureBox19.Image = this.board.pieces["f6"].getImage();
+            this.pictureBox20.Image = this.board.pieces["e6"].getImage();
+            this.pictureBox21.Image = this.board.pieces["d6"].getImage();
+            this.pictureBox22.Image = this.board.pieces["c6"].getImage();
+            this.pictureBox23.Image = this.board.pieces["b6"].getImage();
+            this.pictureBox24.Image = this.board.pieces["a6"].getImage();
+            this.pictureBox25.Image = this.board.pieces["h5"].getImage();
+            this.pictureBox26.Image = this.board.pieces["g5"].getImage();
+            this.pictureBox27.Image = this.board.pieces["f5"].getImage();
+            this.pictureBox28.Image = this.board.pieces["e5"].getImage();
+            this.pictureBox29.Image = this.board.pieces["d5"].getImage();
+            this.pictureBox30.Image = this.board.pieces["c5"].getImage();
+            this.pictureBox31.Image = this.board.pieces["b5"].getImage();
+            this.pictureBox32.Image = this.board.pieces["a5"].getImage();
+            this.pictureBox33.Image = this.board.pieces["h4"].getImage();
+            this.pictureBox34.Image = this.board.pieces["g4"].getImage();
+            this.pictureBox35.Image = this.board.pieces["f4"].getImage();
+            this.pictureBox36.Image = this.board.pieces["e4"].getImage();
+            this.pictureBox37.Image = this.board.pieces["d4"].getImage();
+            this.pictureBox38.Image = this.board.pieces["c4"].getImage();
+            this.pictureBox39.Image = this.board.pieces["b4"].getImage();
+            this.pictureBox40.Image = this.board.pieces["a4"].getImage();
+            this.pictureBox41.Image = this.board.pieces["h3"].getImage();
+            this.pictureBox42.Image = this.board.pieces["g3"].getImage();
+            this.pictureBox43.Image = this.board.pieces["f3"].getImage();
+            this.pictureBox44.Image = this.board.pieces["e3"].getImage();
+            this.pictureBox45.Image = this.board.pieces["d3"].getImage();
+            this.pictureBox46.Image = this.board.pieces["c3"].getImage();
+            this.pictureBox47.Image = this.board.pieces["b3"].getImage();
+            this.pictureBox48.Image = this.board.pieces["a3"].getImage();
+            this.pictureBox49.Image = this.board.pieces["h2"].getImage();
+            this.pictureBox50.Image = this.board.pieces["g2"].getImage();
+            this.pictureBox51.Image = this.board.pieces["f2"].getImage();
+            this.pictureBox52.Image = this.board.pieces["e2"].getImage();
+            this.pictureBox53.Image = this.board.pieces["d2"].getImage();
+            this.pictureBox54.Image = this.board.pieces["c2"].getImage();
+            this.pictureBox55.Image = this.board.pieces["b2"].getImage();
+            this.pictureBox56.Image = this.board.pieces["a2"].getImage();
+            this.pictureBox57.Image = this.board.pieces["h1"].getImage();
+            this.pictureBox58.Image = this.board.pieces["g1"].getImage();
+            this.pictureBox59.Image = this.board.pieces["f1"].getImage();
+            this.pictureBox60.Image = this.board.pieces["e1"].getImage();
+            this.pictureBox61.Image = this.board.pieces["d1"].getImage();
+            this.pictureBox62.Image = this.board.pieces["c1"].getImage();
+            this.pictureBox63.Image = this.board.pieces["b1"].getImage();
+            this.pictureBox64.Image = this.board.pieces["a1"].getImage();
             // 
             // button1
             // 

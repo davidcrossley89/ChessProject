@@ -1,0 +1,3 @@
+C:\Users\Dave\Source\Repos\davidcrossley89\ChessProject\obj\Debug\TestChess.csprojAssemblyReference.cache
+C:\Users\Dave\Source\Repos\davidcrossley89\ChessProject\obj\Debug\TestChess.Form1.resources
+C:\Users\Dave\Source\Repos\davidcrossley89\ChessProject\obj\Debug\TestChess.csproj.GenerateResource.cache

@@ -167,7 +167,7 @@ namespace GamePieces
 					newX = 'h';
 					break;
 			}
-			newY = Convert.ToChar(y+1);
+			newY = Convert.ToChar(Convert.ToString(y + 1));
 			string ans = $"{newX}{newY}";
 			return ans;
 		}
@@ -176,10 +176,7 @@ namespace GamePieces
 		{
 			int x = 0;
 			int y = 0;
-			for (int i = 0; i < 8; i++)
-			{
-				for (int j = 0; j < 8; j++) { displayBoard[i][j] = "X"; }
-			}
+			
 			foreach (GamePiece piece in pieces.Values)
 			{
 				x = piece.getPosition()[0];

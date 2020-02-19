@@ -12,7 +12,7 @@ namespace GamePieces
             setPosition(startPos);
             int[][] possibleMoves = null;
             Boolean isWhite = true;
-            string name = "X";
+            setName("X");
             Image image = null;
         }
     }

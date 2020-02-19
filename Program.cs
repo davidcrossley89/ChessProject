@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GamePieces;
 
 namespace TestChess
 {
@@ -17,7 +13,6 @@ namespace TestChess
 
         static void Main()
         {
-            Console.WriteLine("This is  Output");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 view = new Form1();
@@ -26,7 +21,7 @@ namespace TestChess
 
 
 
-            
+
 
         }
     }

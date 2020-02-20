@@ -7,7 +7,9 @@ using System.Windows.Forms;
 namespace TestChess
 {
     partial class Form1
-    {   
+    {
+
+        public Board board = new Board();
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -170,6 +172,11 @@ namespace TestChess
             this.panel64 = new System.Windows.Forms.Panel();
             this.pictureBox64 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel65 = new System.Windows.Forms.Panel();
+            this.panel66 = new System.Windows.Forms.Panel();
+            this.moveHistory = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -299,6 +306,8 @@ namespace TestChess
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
             this.panel64.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox64)).BeginInit();
+            this.panel65.SuspendLayout();
+            this.panel66.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -313,7 +322,7 @@ namespace TestChess
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 7, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 6, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 5, 7);
@@ -392,7 +401,6 @@ namespace TestChess
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 600);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panel1
             // 
@@ -406,7 +414,6 @@ namespace TestChess
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = this.board.pieces["h8"].getImage();
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 68);
@@ -426,7 +433,6 @@ namespace TestChess
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = this.board.pieces["g8"].getImage();
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(68, 68);
@@ -444,11 +450,9 @@ namespace TestChess
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(75, 75);
             this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = this.board.pieces["f8"].getImage();
             this.pictureBox3.Location = new System.Drawing.Point(3, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(68, 68);
@@ -468,7 +472,6 @@ namespace TestChess
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = this.board.pieces["e8"].getImage();
             this.pictureBox4.Location = new System.Drawing.Point(3, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(68, 68);
@@ -489,7 +492,6 @@ namespace TestChess
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = this.board.pieces["d8"].getImage();
             this.pictureBox5.Location = new System.Drawing.Point(3, 3);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(68, 68);
@@ -509,7 +511,6 @@ namespace TestChess
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = this.board.pieces["c8"].getImage();
             this.pictureBox6.Location = new System.Drawing.Point(3, 3);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(68, 68);
@@ -530,7 +531,6 @@ namespace TestChess
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = this.board.pieces["b8"].getImage();
             this.pictureBox7.Location = new System.Drawing.Point(3, 3);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(68, 68);
@@ -550,7 +550,6 @@ namespace TestChess
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = this.board.pieces["a8"].getImage();
             this.pictureBox8.Location = new System.Drawing.Point(3, 3);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(68, 68);
@@ -570,7 +569,6 @@ namespace TestChess
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = this.board.pieces["h7"].getImage();
             this.pictureBox9.Location = new System.Drawing.Point(3, 3);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(68, 68);
@@ -591,7 +589,6 @@ namespace TestChess
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = this.board.pieces["g7"].getImage();
             this.pictureBox10.Location = new System.Drawing.Point(3, 3);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(68, 68);
@@ -611,7 +608,6 @@ namespace TestChess
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = this.board.pieces["f7"].getImage();
             this.pictureBox11.Location = new System.Drawing.Point(3, 3);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(68, 68);
@@ -632,7 +628,6 @@ namespace TestChess
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = this.board.pieces["e7"].getImage();
             this.pictureBox12.Location = new System.Drawing.Point(3, 3);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(68, 68);
@@ -652,7 +647,6 @@ namespace TestChess
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = this.board.pieces["d7"].getImage();
             this.pictureBox13.Location = new System.Drawing.Point(3, 3);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(68, 68);
@@ -673,7 +667,6 @@ namespace TestChess
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = this.board.pieces["c7"].getImage();
             this.pictureBox14.Location = new System.Drawing.Point(3, 3);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(68, 68);
@@ -693,7 +686,6 @@ namespace TestChess
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = this.board.pieces["b7"].getImage();
             this.pictureBox15.Location = new System.Drawing.Point(3, 3);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(68, 68);
@@ -715,7 +707,6 @@ namespace TestChess
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = this.board.pieces["a7"].getImage();
             this.pictureBox16.Location = new System.Drawing.Point(3, 3);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(68, 68);
@@ -1476,6 +1467,7 @@ namespace TestChess
             this.panel55.TabIndex = 54;
             // 
             // pictureBox55
+            // 
             this.pictureBox55.Location = new System.Drawing.Point(3, 3);
             this.pictureBox55.Name = "pictureBox55";
             this.pictureBox55.Size = new System.Drawing.Size(68, 68);
@@ -1658,76 +1650,80 @@ namespace TestChess
             this.pictureBox64.TabIndex = 0;
             this.pictureBox64.TabStop = false;
             this.pictureBox64.Click += new System.EventHandler(this.pictureBox64_Click);
-            
-            this.pictureBox17.Image = this.board.pieces["h6"].getImage();
-            this.pictureBox18.Image = this.board.pieces["g6"].getImage();
-            this.pictureBox19.Image = this.board.pieces["f6"].getImage();
-            this.pictureBox20.Image = this.board.pieces["e6"].getImage();
-            this.pictureBox21.Image = this.board.pieces["d6"].getImage();
-            this.pictureBox22.Image = this.board.pieces["c6"].getImage();
-            this.pictureBox23.Image = this.board.pieces["b6"].getImage();
-            this.pictureBox24.Image = this.board.pieces["a6"].getImage();
-            this.pictureBox25.Image = this.board.pieces["h5"].getImage();
-            this.pictureBox26.Image = this.board.pieces["g5"].getImage();
-            this.pictureBox27.Image = this.board.pieces["f5"].getImage();
-            this.pictureBox28.Image = this.board.pieces["e5"].getImage();
-            this.pictureBox29.Image = this.board.pieces["d5"].getImage();
-            this.pictureBox30.Image = this.board.pieces["c5"].getImage();
-            this.pictureBox31.Image = this.board.pieces["b5"].getImage();
-            this.pictureBox32.Image = this.board.pieces["a5"].getImage();
-            this.pictureBox33.Image = this.board.pieces["h4"].getImage();
-            this.pictureBox34.Image = this.board.pieces["g4"].getImage();
-            this.pictureBox35.Image = this.board.pieces["f4"].getImage();
-            this.pictureBox36.Image = this.board.pieces["e4"].getImage();
-            this.pictureBox37.Image = this.board.pieces["d4"].getImage();
-            this.pictureBox38.Image = this.board.pieces["c4"].getImage();
-            this.pictureBox39.Image = this.board.pieces["b4"].getImage();
-            this.pictureBox40.Image = this.board.pieces["a4"].getImage();
-            this.pictureBox41.Image = this.board.pieces["h3"].getImage();
-            this.pictureBox42.Image = this.board.pieces["g3"].getImage();
-            this.pictureBox43.Image = this.board.pieces["f3"].getImage();
-            this.pictureBox44.Image = this.board.pieces["e3"].getImage();
-            this.pictureBox45.Image = this.board.pieces["d3"].getImage();
-            this.pictureBox46.Image = this.board.pieces["c3"].getImage();
-            this.pictureBox47.Image = this.board.pieces["b3"].getImage();
-            this.pictureBox48.Image = this.board.pieces["a3"].getImage();
-            this.pictureBox49.Image = this.board.pieces["h2"].getImage();
-            this.pictureBox50.Image = this.board.pieces["g2"].getImage();
-            this.pictureBox51.Image = this.board.pieces["f2"].getImage();
-            this.pictureBox52.Image = this.board.pieces["e2"].getImage();
-            this.pictureBox53.Image = this.board.pieces["d2"].getImage();
-            this.pictureBox54.Image = this.board.pieces["c2"].getImage();
-            this.pictureBox55.Image = this.board.pieces["b2"].getImage();
-            this.pictureBox56.Image = this.board.pieces["a2"].getImage();
-            this.pictureBox57.Image = this.board.pieces["h1"].getImage();
-            this.pictureBox58.Image = this.board.pieces["g1"].getImage();
-            this.pictureBox59.Image = this.board.pieces["f1"].getImage();
-            this.pictureBox60.Image = this.board.pieces["e1"].getImage();
-            this.pictureBox61.Image = this.board.pieces["d1"].getImage();
-            this.pictureBox62.Image = this.board.pieces["c1"].getImage();
-            this.pictureBox63.Image = this.board.pieces["b1"].getImage();
-            this.pictureBox64.Image = this.board.pieces["a1"].getImage();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(623, 237);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(619, 237);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 148);
+            this.button1.Size = new System.Drawing.Size(169, 148);
             this.button1.TabIndex = 1;
             this.button1.Text = "Move";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel65
+            // 
+            this.panel65.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel65.Controls.Add(this.panel66);
+            this.panel65.Controls.Add(this.label1);
+            this.panel65.Location = new System.Drawing.Point(619, 5);
+            this.panel65.Name = "panel65";
+            this.panel65.Size = new System.Drawing.Size(169, 225);
+            this.panel65.TabIndex = 2;
+            // 
+            // panel66
+            // 
+            this.panel66.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel66.Controls.Add(this.moveHistory);
+            this.panel66.Location = new System.Drawing.Point(8, 21);
+            this.panel66.Name = "panel66";
+            this.panel66.Size = new System.Drawing.Size(150, 191);
+            this.panel66.TabIndex = 1;
+            // 
+            // moveHistory
+            // 
+            this.moveHistory.AutoSize = true;
+            this.moveHistory.Location = new System.Drawing.Point(3, 2);
+            this.moveHistory.Name = "moveHistory";
+            this.moveHistory.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.moveHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.moveHistory.Size = new System.Drawing.Size(142, 184);
+            this.moveHistory.TabIndex = 0;
+            this.moveHistory.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(52, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Move History";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(619, 390);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(168, 40);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Reset";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 609);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.panel65);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Chess";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1857,6 +1853,75 @@ namespace TestChess
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
             this.panel64.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox64)).EndInit();
+            this.pictureBox64.Image = board.pieces["a1"].getImage();
+            this.pictureBox56.Image = board.pieces["a2"].getImage();
+            this.pictureBox48.Image = board.pieces["a3"].getImage();
+            this.pictureBox40.Image = board.pieces["a4"].getImage();
+            this.pictureBox32.Image = board.pieces["a5"].getImage();
+            this.pictureBox24.Image = board.pieces["a6"].getImage();
+            this.pictureBox16.Image = board.pieces["a7"].getImage();
+            this.pictureBox8.Image = board.pieces["a8"].getImage();
+            this.pictureBox63.Image = board.pieces["b1"].getImage();
+            this.pictureBox55.Image = board.pieces["b2"].getImage();
+            this.pictureBox47.Image = board.pieces["b3"].getImage();
+            this.pictureBox39.Image = board.pieces["b4"].getImage();
+            this.pictureBox31.Image = board.pieces["b5"].getImage();
+            this.pictureBox23.Image = board.pieces["b6"].getImage();
+            this.pictureBox15.Image = board.pieces["b7"].getImage();
+            this.pictureBox7.Image = board.pieces["b8"].getImage();
+            this.pictureBox62.Image = board.pieces["c1"].getImage();
+            this.pictureBox54.Image = board.pieces["c2"].getImage();
+            this.pictureBox46.Image = board.pieces["c3"].getImage();
+            this.pictureBox38.Image = board.pieces["c4"].getImage();
+            this.pictureBox30.Image = board.pieces["c5"].getImage();
+            this.pictureBox22.Image = board.pieces["c6"].getImage();
+            this.pictureBox14.Image = board.pieces["c7"].getImage();
+            this.pictureBox6.Image = board.pieces["c8"].getImage();
+            this.pictureBox61.Image = board.pieces["d1"].getImage();
+            this.pictureBox53.Image = board.pieces["d2"].getImage();
+            this.pictureBox45.Image = board.pieces["d3"].getImage();
+            this.pictureBox37.Image = board.pieces["d4"].getImage();
+            this.pictureBox29.Image = board.pieces["d5"].getImage();
+            this.pictureBox21.Image = board.pieces["d6"].getImage();
+            this.pictureBox13.Image = board.pieces["d7"].getImage();
+            this.pictureBox5.Image = board.pieces["d8"].getImage();
+            this.pictureBox60.Image = board.pieces["e1"].getImage();
+            this.pictureBox52.Image = board.pieces["e2"].getImage();
+            this.pictureBox44.Image = board.pieces["e3"].getImage();
+            this.pictureBox36.Image = board.pieces["e4"].getImage();
+            this.pictureBox28.Image = board.pieces["e5"].getImage();
+            this.pictureBox20.Image = board.pieces["e6"].getImage();
+            this.pictureBox12.Image = board.pieces["e7"].getImage();
+            this.pictureBox4.Image = board.pieces["e8"].getImage();
+            this.pictureBox59.Image = board.pieces["f1"].getImage();
+            this.pictureBox51.Image = board.pieces["f2"].getImage();
+            this.pictureBox43.Image = board.pieces["f3"].getImage();
+            this.pictureBox35.Image = board.pieces["f4"].getImage();
+            this.pictureBox27.Image = board.pieces["f5"].getImage();
+            this.pictureBox19.Image = board.pieces["f6"].getImage();
+            this.pictureBox11.Image = board.pieces["f7"].getImage();
+            this.pictureBox3.Image = board.pieces["f8"].getImage();
+            this.pictureBox58.Image = board.pieces["g1"].getImage();
+            this.pictureBox50.Image = board.pieces["g2"].getImage();
+            this.pictureBox42.Image = board.pieces["g3"].getImage();
+            this.pictureBox34.Image = board.pieces["g4"].getImage();
+            this.pictureBox26.Image = board.pieces["g5"].getImage();
+            this.pictureBox18.Image = board.pieces["g6"].getImage();
+            this.pictureBox10.Image = board.pieces["g7"].getImage();
+            this.pictureBox2.Image = board.pieces["g8"].getImage();
+            this.pictureBox57.Image = board.pieces["h1"].getImage();
+            this.pictureBox49.Image = board.pieces["h2"].getImage();
+            this.pictureBox41.Image = board.pieces["h3"].getImage();
+            this.pictureBox33.Image = board.pieces["h4"].getImage();
+            this.pictureBox25.Image = board.pieces["h5"].getImage();
+            this.pictureBox17.Image = board.pieces["h6"].getImage();
+            this.pictureBox9.Image = board.pieces["h7"].getImage();
+            this.pictureBox1.Image = board.pieces["h8"].getImage();
+
+            this.panel65.ResumeLayout(false);
+            this.panel65.PerformLayout();
+            this.panel66.ResumeLayout(false);
+            this.panel66.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1872,7 +1937,7 @@ namespace TestChess
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        public System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
@@ -1993,6 +2058,11 @@ namespace TestChess
         public System.Windows.Forms.PictureBox pictureBox63;
         public System.Windows.Forms.PictureBox pictureBox64;
         private System.Windows.Forms.Button button1;
+        private Panel panel65;
+        private Label label1;
+        private Panel panel66;
+        private RichTextBox moveHistory;
+        private Button button2;
     }
 }
 

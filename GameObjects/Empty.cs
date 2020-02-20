@@ -7,5 +7,9 @@
             setPosition(startPos);
             setName("X");
         }
+        public override bool checkMove(int[] newPos)
+        {
+            return false;
+        }
     }
 }

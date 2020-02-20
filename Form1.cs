@@ -7,23 +7,29 @@ namespace TestChess
 {
     public partial class Form1 : Form
     {
-        public Board board = new Board();
+        
         public int[][] moveArray = new int[2][];
         public PictureBox[] boxArray = new PictureBox[2];
         public bool startPos = true;
         Graphics g;
+        public bool whiteTurn = true;
+
         public void UpdateBoard()
         {
             string startPos = board.coordConvertToAlg(moveArray[0]);
             string endPos = board.coordConvertToAlg(moveArray[1]);
             GamePiece startPiece = board.pieces[startPos];
-            Console.WriteLine("{0},{1}, {2}", startPos, endPos, startPiece.getName());
+            
             bool possible = startPiece.checkMove(moveArray[1]);
             if (possible)
             {
                 board.pieces[endPos] = startPiece;
                 startPiece.setPosition(moveArray[1]);
                 board.pieces[startPos] = new Empty(moveArray[0]);
+                moveHistory.Text = moveHistory.Text + startPiece.getName() + ": " + startPos + " => " + endPos + '\n';
+                if (whiteTurn) { button1.BackColor = Color.Black; button1.ForeColor = Color.White; }
+                else { button1.BackColor = Color.White; button1.ForeColor = Color.Black; }
+                whiteTurn = !whiteTurn;
             }
 
             boxArray[0].Image = board.pieces[startPos].getImage();
@@ -31,6 +37,7 @@ namespace TestChess
 
             boxArray[0].BackColor = Color.FromArgb(0, 0, 0, 0);
             boxArray[1].BackColor = Color.FromArgb(0, 0, 0, 0);
+            
             board.populateBoard();
             board.printBoard();
 
@@ -47,21 +54,8 @@ namespace TestChess
             UpdateBoard();
             startPos = true;
             moveArray = new int[2][];
+            boxArray = new PictureBox[2];
 
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
 
         }
 
@@ -706,6 +700,13 @@ namespace TestChess
             startPos = !startPos;
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            boxArray[0].BackColor = Color.FromArgb(0, 0, 0, 0);
+            boxArray[1].BackColor = Color.FromArgb(0, 0, 0, 0);
+            moveArray = new int[2][];
+            boxArray = new PictureBox[2];
+            startPos = true;
+        }
     }
 }

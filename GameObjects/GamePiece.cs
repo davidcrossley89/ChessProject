@@ -12,7 +12,7 @@ namespace GamePieces
         Image image;
 
         //given a position, check to see if a) the piece can get there, and b) if the piece is on the board
-        public bool checkMove(int[] newPos)
+        public virtual bool checkMove(int[] newPos)
         {
             bool ans = false;
             int[][] allMoves = getPossibleMoves();
